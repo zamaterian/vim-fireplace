@@ -683,7 +683,7 @@ function! fireplace#platform(...) abort
   endif
   " always return a repl connection if any exists
   if len(s:repls)
-    echo s:repls[0] 
+    return s:repls[0] 
   endif    
   throw 'Fireplace: :Connect to a REPL or install classpath.vim'
 endfunction
