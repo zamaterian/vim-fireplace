@@ -681,6 +681,10 @@ function! fireplace#platform(...) abort
   if !empty(path) && fnamemodify(bufname(buf), ':e') =~# '^clj[cx]\=$'
     return extend({'_path': path, 'nr': bufnr(buf)}, s:oneoff)
   endif
+  " always return a repl connection if any exists
+  if len(s:repls)
+    echo s:repls[0] 
+  endif    
   throw 'Fireplace: :Connect to a REPL or install classpath.vim'
 endfunction
 
